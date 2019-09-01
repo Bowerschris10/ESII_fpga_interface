@@ -1,13 +1,20 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h> // for gpio.h
+#include "inc/hw_memmap.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/gpio.h"
+#include "driverlib/sysctl.h"
 #include "driverlib/uart.h" // for Ti defined UART functions
 
 #define BAUD_RATE 115200
-#define NUM_OUTPUT_CHARS_CAMERA 
+#define NUM_OUTPUT_CHARS_CAMERA 8
 
 //
 // Configures UART peripheral as well as GPIO pins for transmit and receive.
 //
-void initUART(uint32_t UARTbase) {
+void initUART(uint32_t UARTbase, uint32_t clockRate) {
     // enable UART peripheral
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
     
@@ -33,10 +40,10 @@ void initUART(uint32_t UARTbase) {
     //
     // Configure the UART for 115,200, 8-N-1 operation.
     //
-    UARTConfigSetExpClk(UART0_BASE, g_ui32SysClock, BAUD_RATE,
+    UARTConfigSetExpClk(UART0_BASE, clockRate, BAUD_RATE,
                             (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                              UART_CONFIG_PAR_NONE));
-    UARTConfigSetExpClk(UART7_BASE, g_ui32SysClock, BAUD_RATE,
+    UARTConfigSetExpClk(UART7_BASE, clockRate, BAUD_RATE,
                             (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                              UART_CONFIG_PAR_NONE));
 }
@@ -48,7 +55,7 @@ void UARTSendByte(uint32_t fpgaId, uint8_t data) {
     //
     // Put a character in the output buffer.
     //
-    UARTCharPut(fpgaId, data));
+    UARTCharPut(fpgaId, data);
 }
 
 //
@@ -59,22 +66,18 @@ uint64_t readFPGAData(uint32_t fpgaId) {
     uint8_t singleChar;
     uint64_t cameraOutputChars;
     numberIterations = 0;
-    cameraOutPutChar = 0;
+    cameraOutputChars = 0;
     singleChar = 0;
     
-    while (numberIterations < NUM_OUTPUT_CHARS_CAMERA) {
+    while (numberIterations < sizeof(singleChar) * 8) {
         if (!UARTCharsAvail(fpgaId)) {
             // Get ASCII charactor from camera and put into cameraOutputChars
-            cameraOutputChars = UARTCharGetNonBlocking(fpgaId);
-            // Shift
-            cameraOutputChars <<= CAMERA_OUTPUT_LEN;
+            singleChar = UARTCharGetNonBlocking(fpgaId);
+            cameraOutputChars = singleChar;
+            // Leftshift variable the size of a single char from camera.
+            cameraOutputChars <<= sizeof(singleChar) * 8;
             numberIterations++;
         }
     }
     return cameraOutputChars;
 }
-
-//
-// Disable the UART.
-//
-//UARTDisable(UARTbase);
