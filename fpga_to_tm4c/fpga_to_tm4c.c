@@ -17,7 +17,8 @@
 void initUART(uint32_t UARTbase, uint32_t clockRate) {
     // enable UART peripheral
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
-    
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART7);
+
     // enable GPIO ports a and c
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
@@ -37,13 +38,16 @@ void initUART(uint32_t UARTbase, uint32_t clockRate) {
     GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
     GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_5);
     
+    UARTDisable(UART7_BASE);
+    
     //
     // Configure the UART for 115,200, 8-N-1 operation.
     //
-    UARTConfigSetExpClk(UART0_BASE, clockRate, BAUD_RATE,
-                            (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
-                             UART_CONFIG_PAR_NONE));
     UARTConfigSetExpClk(UART7_BASE, clockRate, BAUD_RATE,
+                        (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+                         UART_CONFIG_PAR_NONE));
+    
+    UARTConfigSetExpClk(UART0_BASE, clockRate, BAUD_RATE,
                             (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                              UART_CONFIG_PAR_NONE));
 }
