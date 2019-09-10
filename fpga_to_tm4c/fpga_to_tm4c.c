@@ -2,28 +2,37 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h> // for gpio.h
-#include "inc/hw_memmap.h"
+#include "inc/hw_ints.h"
 #include "driverlib/pin_map.h"
+#include "driverlib/rom.h"
+#include "driverlib/rom_map.h"
+#include "inc/hw_memmap.h"
 #include "driverlib/gpio.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h" // for Ti defined UART functions
 
-#define BAUD_RATE 115200
-#define NUM_OUTPUT_CHARS_CAMERA 8
+#define BAUD_RATE 111111
+#define NUM_OUTPUT_CHARS_CAMERA 11
 
 //
 // Configures UART peripheral as well as GPIO pins for transmit and receive.
 //
 void initUART(uint32_t UARTbase, uint32_t clockRate) {
     // enable UART peripheral
+    // serial console for debugging
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
+    // pin for writing to FPGA
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART6);
+    // pin for reading from FPGA
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART7);
 
     // enable GPIO ports a and c
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
 
-    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_UART0))
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_UART0) &
+          !SysCtlPeripheralReady(SYSCTL_PERIPH_UART7) &
+          !SysCtlPeripheralReady(SYSCTL_PERIPH_UART6))
     {
     }
         
@@ -37,9 +46,7 @@ void initUART(uint32_t UARTbase, uint32_t clockRate) {
     GPIOPinConfigure(GPIO_PC5_U7TX);
     GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
     GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_5);
-    
-    UARTDisable(UART7_BASE);
-    
+            
     //
     // Configure the UART for 115,200, 8-N-1 operation.
     //
@@ -47,9 +54,12 @@ void initUART(uint32_t UARTbase, uint32_t clockRate) {
                         (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                          UART_CONFIG_PAR_NONE));
     
-    UARTConfigSetExpClk(UART0_BASE, clockRate, BAUD_RATE,
+    UARTConfigSetExpClk(UART0_BASE, clockRate, 115200,
                             (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                              UART_CONFIG_PAR_NONE));
+    
+    UARTEnable(UART7_BASE);
+    UARTEnable(UART0_BASE);
 }
 
 //
@@ -63,9 +73,9 @@ void UARTSendByte(uint32_t fpgaId, uint8_t data) {
 }
 
 //
-// Reads data from FPGA and organizes it into 64 bit registry
+// Reads data from FPGA and prints to UART0 (serial terminal)
 //
-uint64_t readFPGAData(uint32_t fpgaId) {
+char readFPGAData(uint32_t fpgaId) {
     uint8_t numberIterations;
     uint8_t singleChar;
     uint64_t cameraOutputChars;
@@ -73,6 +83,8 @@ uint64_t readFPGAData(uint32_t fpgaId) {
     cameraOutputChars = 0;
     singleChar = 0;
     
+    singleChar = UARTCharGetNonBlocking(fpgaId);
+    /*
     while (numberIterations < sizeof(singleChar) * 8) {
         if (!UARTCharsAvail(fpgaId)) {
             // Get ASCII charactor from camera and put into cameraOutputChars
@@ -83,5 +95,46 @@ uint64_t readFPGAData(uint32_t fpgaId) {
             numberIterations++;
         }
     }
-    return cameraOutputChars;
+    */
+    return singleChar;
+}
+
+//
+// Sends a string to console UART
+//
+void UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count) {
+
+    //
+    // Loop while there are more characters to send.
+    //
+    while(ui32Count--)
+    {
+        //
+        // Write the next character to the UART.
+        //
+        ROM_UARTCharPutNonBlocking(UART0_BASE, *pui8Buffer++);
+    }
+}
+
+//
+// Displays a menu to the serial console. Processes menu inputs
+//
+void UARTMenu() {
+    char command;
+    // issue printing entire string when running. Can print when stepping thru
+    // UARTSend
+    // UARTSend("EagleSat II FPGA Command Interface\n", 64); 
+    UARTSend("enter command >> ", 17);
+    while (1) {
+        command = UARTCharGet(UART0_BASE);
+        if (command == 's') { // send 'a' character to FPGA via UART6
+            UARTCharPut(UART6_BASE, 'a');
+            UARTCharPut(UART0_BASE, '\n');
+            UARTCharPut(UART0_BASE, 'a');
+        } else if (command == 'l') { // listen to FPGA
+            UARTCharPut(UART0_BASE, 'l');
+            UARTCharPut(UART0_BASE, '\n');                        
+            UARTCharPut(UART0_BASE, UARTCharGet(UART7_BASE));
+        }
+    }
 }

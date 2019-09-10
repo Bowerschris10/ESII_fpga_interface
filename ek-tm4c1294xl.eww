@@ -2,13 +2,7 @@
 
 <workspace>
   <project>
-    <path>$WS_DIR$\..\..\..\driverlib\driverlib.ewp</path>
-  </project>
-  <project>
     <path>$WS_DIR$\fpga_to_tm4c\fpga_to_tm4c.ewp</path>
-  </project>
-  <project>
-    <path>$WS_DIR$\..\..\..\usblib\usblib.ewp</path>
   </project>
   <project>
     <path>$WS_DIR$\bitband\bitband.ewp</path>

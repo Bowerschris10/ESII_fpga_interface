@@ -6,118 +6,73 @@
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\startup_ewarm.c</file>
-      <file>$PROJ_DIR$\..\..\..\..\driverlib\ewarm\Exe\driverlib.a</file>
+      <file>$PROJ_DIR$\..\..\..\..\inc\hw_ints.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\driverlib\rom_map.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\driverlib\rom.h</file>
       <file>$PROJ_DIR$\fpga_to_tm4c.h</file>
-      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c_debug.o</file>
-      <file>$PROJ_DIR$\ewarm\Obj\uart_echo.pbi</file>
-      <file>$PROJ_DIR$\..\..\..\..\inc\hw_nvic.h</file>
-      <file>$PROJ_DIR$\..\..\..\..\driverlib\uart.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
-      <file>$PROJ_DIR$\..\..\..\..\driverlib\sysctl.h</file>
-      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c.pbd</file>
-      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c.o</file>
-      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
-      <file>$PROJ_DIR$\ewarm\Exe\fpga_to_tm4c.bin</file>
       <file>$PROJ_DIR$\fpga_to_tm4c.c</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$PROJ_DIR$\uart_echo.c</file>
       <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
       <file>$PROJ_DIR$\ewarm\Obj\startup_ewarm.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-      <file>$PROJ_DIR$\ewarm\Obj\uart_echo.o</file>
+      <file>$PROJ_DIR$\..\..\..\..\driverlib\ewarm\Exe\driverlib.a</file>
       <file>$PROJ_DIR$\fpga_to_tm4c_debug.c</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
-      <file>$PROJ_DIR$\uart_echo.c</file>
+      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c.pbi</file>
+      <file>$PROJ_DIR$\ewarm\Exe\fpga_to_tm4c.bin</file>
+      <file>$PROJ_DIR$\..\..\..\..\inc\hw_nvic.h</file>
+      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c.o</file>
+      <file>$PROJ_DIR$\ewarm\Obj\uart_echo.o</file>
       <file>$PROJ_DIR$\ewarm\Exe\uart_echo.out</file>
       <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
-      <file>$PROJ_DIR$\ewarm\Obj\startup_ewarm.o</file>
-      <file>$PROJ_DIR$\..\..\..\..\inc\hw_types.h</file>
-      <file>$PROJ_DIR$\..\..\..\..\driverlib\gpio.h</file>
       <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
-      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c_debug.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
-      <file>$PROJ_DIR$\uart_echo.icf</file>
-      <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
-      <file>$PROJ_DIR$\..\..\..\..\driverlib\pin_map.h</file>
-      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-      <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
-      <file>$PROJ_DIR$\ewarm\List\uart_echo.map</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
-      <file>$PROJ_DIR$\..\uart_echo\uart_echo.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\driverlib\uart.h</file>
+      <file>$PROJ_DIR$\startup_ewarm.c</file>
+      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c.pbd</file>
+      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\inc\hw_types.h</file>
       <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
+      <file>$PROJ_DIR$\ewarm\Obj\startup_ewarm.o</file>
+      <file>$PROJ_DIR$\..\..\..\..\driverlib\pin_map.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\driverlib\sysctl.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\driverlib\gpio.h</file>
+      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$PROJ_DIR$\ewarm\Obj\uart_echo.pbi</file>
+      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c_debug.o</file>
+      <file>$PROJ_DIR$\ewarm\Obj\fpga_to_tm4c_debug.pbi</file>
+      <file>$PROJ_DIR$\uart_echo.icf</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+      <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\ewarm\List\uart_echo.map</file>
       <file>$PROJ_DIR$\..\..\..\..\inc\hw_memmap.h</file>
-      <file>$PROJ_DIR$\..\uart_echo\startup_ewarm.c</file>
     </outputs>
-    <file>
-      <name>$PROJ_DIR$\startup_ewarm.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 18</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 26</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 19 7 8 27 34 35 5 17 22 16</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 16 19 17 34 8 35 7 22 5 27</file>
-        </tool>
-      </inputs>
-    </file>
     <file>
       <name>$PROJ_DIR$\fpga_to_tm4c.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 12</file>
+          <file> 10</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 11</file>
+          <file> 13</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 6 31 7 8 19 43 17 16 28 34 35 40 25 36 9 42 22 13</file>
+          <file> 45 27 34 22 21 0 6 35 2 30 43 40 42 16 26 1 32 18 24 29 31</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 13 19 17 34 8 35 7 22 31 42 40 16 25 43 36 28 9 6</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\fpga_to_tm4c_debug.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 30</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 3</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 7 34 19 17 6 43 35 16 28 31 8 40 25 36 9 2 42 22 13</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 13 19 17 34 8 35 7 22 31 42 40 16 25 43 36 28 9 6 2</file>
+          <file> 31 21 6 43 22 40 34 29 27 24 42 35 16 0 26 2 1 45 32 30 18</file>
         </tool>
       </inputs>
     </file>
@@ -126,30 +81,76 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 4</file>
+          <file> 36</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 20</file>
+          <file> 14</file>
         </tool>
       </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\fpga_to_tm4c_debug.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 38</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 37</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21 32 24 6 2 27 35 45 18 29 42 16 1 26 30 3 43 34 22 40 31</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 31 21 6 43 22 40 34 29 27 24 42 35 16 2 1 45 26 32 30 18 3</file>
+        </tool>
+      </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\ewarm\Exe\uart_echo.out</name>
       <outputs>
         <tool>
-          <name>ILINK</name>
-          <file> 39</file>
+          <name>OBJCOPY</name>
+          <file> 11</file>
         </tool>
         <tool>
-          <name>OBJCOPY</name>
-          <file> 14</file>
+          <name>ILINK</name>
+          <file> 44</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ILINK</name>
-          <file> 32 1 11 3 26 37 33 38 29</file>
+          <file> 39 8 13 37 25 33 28 41 17</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\startup_ewarm.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 7</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 25</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21 34 22 23 43 40 12 6 29 35</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 35 21 6 43 22 40 34 29 12 23</file>
         </tool>
       </inputs>
     </file>
@@ -158,7 +159,7 @@
       <outputs>
         <tool>
           <name>ILINK</name>
-          <file> 24 39</file>
+          <file> 15 44</file>
         </tool>
       </outputs>
     </file>
