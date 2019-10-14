@@ -16,14 +16,15 @@
 
 //
 // Configures UART peripheral as well as GPIO pins for transmit and receive.
+// Configures TX and RX for both FPGA and Raspberry PI.
 //
 void initUART(uint32_t UARTbase, uint32_t clockRate) {
     // enable UART peripheral
     // serial console for debugging
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
-    // pin for writing to FPGA
+    // pin for read/write to FPGA
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART6);
-    // pin for reading from FPGA
+    // pin for read/write to raspberry pi
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART7);
 
     // enable GPIO ports a and c
@@ -44,8 +45,13 @@ void initUART(uint32_t UARTbase, uint32_t clockRate) {
     
     GPIOPinConfigure(GPIO_PC4_U7RX);
     GPIOPinConfigure(GPIO_PC5_U7TX);
+    
+    GPIOPinConfigure(GPIO_PC6_U6RX);
+    GPIOPinConfigure(GPIO_PC7_U6TX);
+    
     GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-    GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_5);
+    GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_5
+                                     GPIO_PIN_6 | GPIO_PIN_7);
             
     //
     // Configure the UART for 115,200, 8-N-1 operation.
@@ -54,11 +60,16 @@ void initUART(uint32_t UARTbase, uint32_t clockRate) {
                         (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                          UART_CONFIG_PAR_NONE));
     
+    UARTConfigSetExpClk(UART6_BASE, clockRate, BAUD_RATE,
+                        (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
+                         UART_CONFIG_PAR_NONE));
+    
     UARTConfigSetExpClk(UART0_BASE, clockRate, 115200,
                             (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                              UART_CONFIG_PAR_NONE));
     
     UARTEnable(UART7_BASE);
+    UARTEnable(UART6_BASE);
     UARTEnable(UART0_BASE);
 }
 
