@@ -11,7 +11,9 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h" // for Ti defined UART functions
 
-#define BAUD_RATE 111111
+
+//#define BAUD_RATE 111111 // camera baud rate
+#define BAUD_RATE 115200 // pi baud rate
 #define NUM_OUTPUT_CHARS_CAMERA 11
 
 //
@@ -23,7 +25,7 @@ void initUART(uint32_t UARTbase, uint32_t clockRate) {
     // serial console for debugging
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
     // pin for read/write to FPGA
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART6);
+//    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART6);
     // pin for read/write to raspberry pi
     SysCtlPeripheralEnable(SYSCTL_PERIPH_UART7);
 
@@ -46,11 +48,11 @@ void initUART(uint32_t UARTbase, uint32_t clockRate) {
     GPIOPinConfigure(GPIO_PC4_U7RX);
     GPIOPinConfigure(GPIO_PC5_U7TX);
     
-    GPIOPinConfigure(GPIO_PC6_U6RX);
-    GPIOPinConfigure(GPIO_PC7_U6TX);
+//    GPIOPinConfigure(GPIO_PC6_U6RX);
+//    GPIOPinConfigure(GPIO_PC7_U6TX);
     
     GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-    GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_5
+    GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_5 |
                                      GPIO_PIN_6 | GPIO_PIN_7);
             
     //
@@ -59,17 +61,17 @@ void initUART(uint32_t UARTbase, uint32_t clockRate) {
     UARTConfigSetExpClk(UART7_BASE, clockRate, BAUD_RATE,
                         (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                          UART_CONFIG_PAR_NONE));
-    
+    /*
     UARTConfigSetExpClk(UART6_BASE, clockRate, BAUD_RATE,
                         (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                          UART_CONFIG_PAR_NONE));
-    
+    */
     UARTConfigSetExpClk(UART0_BASE, clockRate, 115200,
                             (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |
                              UART_CONFIG_PAR_NONE));
     
     UARTEnable(UART7_BASE);
-    UARTEnable(UART6_BASE);
+//    UARTEnable(UART6_BASE);
     UARTEnable(UART0_BASE);
 }
 
@@ -147,5 +149,51 @@ void UARTMenu() {
             UARTCharPut(UART0_BASE, '\n');                        
             UARTCharPut(UART0_BASE, UARTCharGet(UART7_BASE));
         }
+    }
+}
+
+void blink() {
+    volatile uint32_t ui32Loop;
+
+    //
+    // Enable the GPIO port that is used for the on-board LED.
+    //
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
+
+    //
+    // Check if the peripheral access is enabled.
+    //
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION))
+    {
+    }
+
+    //
+    // Enable the GPIO pin for the LED (PN0).  Set the direction as output, and
+    // enable the GPIO pin for digital function.
+    //
+    GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_0);
+
+    //
+    // Turn on the LED.
+    //
+    GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
+
+    //
+    // Delay for a bit.
+    //
+    for(ui32Loop = 0; ui32Loop < 2000000; ui32Loop++)
+    {
+    }
+
+    //
+    // Turn off the LED.
+    //
+    GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0x0);
+
+    //
+    // Delay for a bit.
+    //
+    for(ui32Loop = 0; ui32Loop < 2000000; ui32Loop++)
+    {
     }
 }

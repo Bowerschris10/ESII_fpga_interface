@@ -19,7 +19,7 @@
           
           
           
-        <Column0>270</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>259</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Disassembly>
         <col-names>
@@ -34,12 +34,12 @@
         
         
       <PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows><ShowCodeCoverage>1</ShowCodeCoverage><ShowInstrProfiling>1</ShowInstrProfiling></Disassembly>
-    </Static>
+    <Find-All-Declarations><ColumnWidth0>552</ColumnWidth0><ColumnWidth1>78</ColumnWidth1><ColumnWidth2>946</ColumnWidth2></Find-All-Declarations></Static>
     <Windows>
       
       
       
-    <Wnd0>
+    <Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-21547-14870</Identity>
@@ -53,9 +53,9 @@
             <Factory>Build</Factory>
             <Session/>
           </Tab>
-        </Tabs>
+        <Tab><Identity>TabID-4660-1701</Identity><TabName>Declarations</TabName><Factory>Find-All-Declarations</Factory><Session/></Tab></Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+      <SelectedTab>0</SelectedTab></Wnd3><Wnd4>
         <Tabs>
           <Tab>
             <Identity>TabID-32295-14874</Identity>
@@ -63,25 +63,25 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>fpga_to_tm4c</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>fpga_to_tm4c</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd1><Wnd2><Tabs><Tab><Identity>TabID-392-11221</Identity><TabName>Disassembly</TabName><Factory>Disassembly</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd2></Windows>
+      <SelectedTab>0</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-392-11221</Identity><TabName>Disassembly</TabName><Factory>Disassembly</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
     <Editor>
       
       
       
       
       
-    <Pane/><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\fpga_to_tm4c\fpga_to_tm4c.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>156</YPos2><SelStart2>5094</SelStart2><SelEnd2>5094</SelEnd2></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\blinky\blinky.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>83</YPos2><SelStart2>3283</SelStart2><SelEnd2>3283</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\fpga_to_tm4c\fpga_to_tm4c_debug.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>15</YPos2><SelStart2>1512</SelStart2><SelEnd2>1512</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-05ADF508><key>iaridepm.enu1</key></Toolbar-05ADF508></Sizes></Row0><Row1><Sizes><Toolbar-20AFFA88><key>debuggergui.enu1</key></Toolbar-20AFFA88></Sizes></Row1><Row2><Sizes/></Row2></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>573</Bottom><Right>344</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>130208</sizeHorzCX><sizeHorzCY>243605</sizeHorzCY><sizeVertCX>225260</sizeVertCX><sizeVertCY>700365</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>573</Bottom><Right>514</Right><x>-2</x><y>-2</y><xscreen>160</xscreen><yscreen>165</yscreen><sizeHorzCX>104167</sizeHorzCX><sizeHorzCY>200974</sizeHorzCY><sizeVertCX>335938</sizeVertCX><sizeVertCY>700365</sizeVertCY></Rect></Wnd2></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>179</Bottom><Right>1538</Right><x>-2</x><y>-2</y><xscreen>1540</xscreen><yscreen>181</yscreen><sizeHorzCX>1002604</sizeHorzCX><sizeHorzCY>220463</sizeHorzCY><sizeVertCX>130208</sizeVertCX><sizeVertCY>243605</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-0572EAA8><key>iaridepm.enu1</key></Toolbar-0572EAA8></Sizes></Row0><Row1><Sizes><Toolbar-2157D948><key>debuggergui.enu1</key></Toolbar-2157D948></Sizes></Row1><Row2><Sizes/></Row2></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>541</Bottom><Right>350</Right><x>-2</x><y>-2</y><xscreen>204</xscreen><yscreen>192</yscreen><sizeHorzCX>155725</sizeHorzCX><sizeHorzCY>245524</sizeHorzCY><sizeVertCX>268702</sizeVertCX><sizeVertCY>694373</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>541</Bottom><Right>384</Right><x>-2</x><y>-2</y><xscreen>162</xscreen><yscreen>159</yscreen><sizeHorzCX>123664</sizeHorzCX><sizeHorzCY>203325</sizeHorzCY><sizeVertCX>294656</sizeVertCX><sizeVertCY>694373</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>172</Bottom><Right>1312</Right><x>-2</x><y>-2</y><xscreen>1314</xscreen><yscreen>174</yscreen><sizeHorzCX>1003053</sizeHorzCX><sizeHorzCY>222506</sizeHorzCY><sizeVertCX>155725</sizeVertCX><sizeVertCY>245524</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

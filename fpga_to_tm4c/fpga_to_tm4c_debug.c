@@ -19,7 +19,7 @@
 
 int main(void) {
     uint32_t g_ui32SysClock;
-    char quickBuffer[NUM_OUTPUT_CHARS_CAMERA];
+    uint8_t quickBuffer[NUM_OUTPUT_CHARS_CAMERA];
     uint8_t charReadBuffer[NUM_OUTPUT_CHARS_CAMERA];
     for (int i = 0; i < NUM_OUTPUT_CHARS_CAMERA; i++)
         quickBuffer[i] = 'a';
@@ -30,15 +30,16 @@ int main(void) {
     initUART(UART0_BASE, g_ui32SysClock);
     
     // has built in while(1) loop for menu processing
-    UARTMenu();
+    //UARTMenu();
     
     while (1) {
         // write test buffer to serial terminal
-        //UARTSend(quickBuffer[0], 8);
+        //UARTSend(*quickBuffer[0], 8);
         // put char recieved from FPGA into serial terminal
         //UARTCharPutNonBlocking(UART0_BASE, UARTCharGetNonBlocking(UART7_BASE));
         // put character 'a' into serial ternimal
-        //UARTCharPutNonBlocking(UART0_BASE, 'a');
+        UARTCharPut(UART0_BASE, 0x03);
+//        UARTCharPutNonBlocking(UART7_BASE, 'a');
         // send char 'a' to FPGA
         //UARTCharPutNonBlocking(UART6_BASE, 'a');
         // send char recieved from serial termial to FPGA
@@ -50,5 +51,6 @@ int main(void) {
             if (!UARTCharsAvail(fpgaId))
                 charReadBuffer[i] = UARTCharGetNonBlocking(UART7_BASE);
         */
+        //blink();
     }
 }
