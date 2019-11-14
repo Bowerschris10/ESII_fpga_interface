@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=352334764
+Checksum=-380669045
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -75,8 +75,10 @@ LogFile=_ ""
 [Disassemble mode]
 mode=0
 [Breakpoints]
-Count=0
-[Aliases]
-A0=_ "C:\Jenkins\workspace\TivaWare-Git-Release\DriverLib\build\DriverLib.test\driverlib\uart.c" ""
+Bp0=_ "STD_CODE" "0x000008F4" 0 0 0 0 "" 0 ""
 Count=1
+[Aliases]
+A0=_ "C:\Jenkins\workspace\TivaWare-Git-Release\DriverLib\build\DriverLib.test\driverlib\sysctl.c" ""
+A1=_ "C:\Jenkins\workspace\TivaWare-Git-Release\DriverLib\build\DriverLib.test\driverlib\uart.c" ""
+Count=2
 SuppressDialog=1
