@@ -19,6 +19,8 @@
 
 int main(void) {
     uint32_t g_ui32SysClock;
+    int32_t char_received;
+    double pixel_data;
     uint8_t quickBuffer[NUM_OUTPUT_CHARS_CAMERA];
     uint8_t charReadBuffer[NUM_OUTPUT_CHARS_CAMERA];
     for (int i = 0; i < NUM_OUTPUT_CHARS_CAMERA; i++)
@@ -37,8 +39,22 @@ int main(void) {
         //UARTSend(*quickBuffer[0], 8);
         // put char recieved from FPGA into serial terminal
         //UARTCharPutNonBlocking(UART0_BASE, UARTCharGetNonBlocking(UART7_BASE));
-        // put character 'a' into serial ternimal
-        UARTCharPut(UART0_BASE, 0x03);
+        // put character 'a' into Raspberry Pi, (pyserial read) serial ternimal
+        
+        // for commanding camera FPGA
+        UARTCharPut(UART7_BASE, 'a');
+        pixel_data = UARTCharGet(UART7_BASE); // is data packet coming at one time?
+        UARTCharPut(UART0_BASE, pixel_data);
+        
+        /*
+        // for UART0 testing
+        char_received = UARTCharGet(UART0_BASE);
+        UARTCharPut(UART0_BASE, char_received);
+        UARTCharPut(UART0_BASE, char_received);
+        */
+        
+        // for putty use
+        //UARTCharPut(UART0_BASE, 'a');
 //        UARTCharPutNonBlocking(UART7_BASE, 'a');
         // send char 'a' to FPGA
         //UARTCharPutNonBlocking(UART6_BASE, 'a');

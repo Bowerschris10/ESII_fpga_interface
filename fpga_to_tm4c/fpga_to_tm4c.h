@@ -1,8 +1,16 @@
 #ifndef _tm4c_to_fpga_h_
     #define _tm4c_to_fpga_h_
 #endif
+
 #define BAUD_RATE 115200
 #define NUM_OUTPUT_CHARS_CAMERA 11
+
+// Camera commands
+#define GET_THRESHOLD_VALUE 0x13
+#define SET_THRESHOLD_VALUE 0x14
+#define SEND_DATA           0x10
+#define NO_DATA             0xOF
+#define MEMORY_FULL         0x0E
 
 // Configures UART peripheral as well as GPIO pins for transmit and receive.
 void initUART(uint32_t UARTbase, uint32_t clockRate);
