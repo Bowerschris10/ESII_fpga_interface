@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V7.70.1.11437/W32 for ARM                13/Nov/2019  20:48:55
+# IAR ELF Linker V7.70.1.11437/W32 for ARM                23/Nov/2019  13:03:22
 # Copyright 2007-2016 IAR Systems AB.
 #
 #    Output file  =  
@@ -45,23 +45,23 @@ do not initialize { section .noinit };
   .intvec  const    0x00000000  0x200  startup_ewarm.o [1]
                   - 0x00000200  0x200
 
-"P1":                           0x9b0
+"P1":                           0x9d0
   .text    ro code  0x00000200  0x4e0  sysctl.o [4]
   .text    ro code  0x000006e0  0x214  gpio.o [4]
   .text    ro code  0x000008f4   0xd0  fpga_to_tm4c.o [1]
   .text    ro code  0x000009c4   0x9c  uart.o [4]
-  .text    ro code  0x00000a60   0x4c  DblToI32.o [5]
-  .text    ro code  0x00000aac   0x48  fpga_to_tm4c_debug.o [1]
-  .text    ro code  0x00000af4   0x2c  I32ToDbl.o [5]
-  .text    ro code  0x00000b20   0x22  fpinit_M.o [5]
-  .text    ro code  0x00000b44   0x1a  startup_ewarm.o [1]
-  .text    ro code  0x00000b5e    0xc  cstartup_M.o [6]
-  .text    ro code  0x00000b6c   0x1a  cmain.o [6]
-  .text    ro code  0x00000b86    0x4  low_level_init.o [3]
-  .text    ro code  0x00000b8a    0x4  exit.o [3]
-  .text    ro code  0x00000b90    0xa  cexit.o [6]
-  .text    ro code  0x00000b9c   0x14  exit.o [7]
-                  - 0x00000bb0  0x9b0
+  .text    ro code  0x00000a60   0x64  fpga_to_tm4c_debug.o [1]
+  .text    ro code  0x00000ac4   0x2c  I32ToDbl.o [5]
+  .text    ro code  0x00000af0   0x4c  DblToI32.o [5]
+  .text    ro code  0x00000b3c   0x22  fpinit_M.o [5]
+  .text    ro code  0x00000b60   0x1e  startup_ewarm.o [1]
+  .text    ro code  0x00000b7e    0xc  cstartup_M.o [6]
+  .text    ro code  0x00000b8c   0x1a  cmain.o [6]
+  .text    ro code  0x00000ba6    0x4  low_level_init.o [3]
+  .text    ro code  0x00000baa    0x4  exit.o [3]
+  .text    ro code  0x00000bb0    0xa  cexit.o [6]
+  .text    ro code  0x00000bbc   0x14  exit.o [7]
+                  - 0x00000bd0  0x9d0
 
 "P2":                           0x100
   .noinit  uninit   0x20000000  0x100  startup_ewarm.o [1]
@@ -77,10 +77,10 @@ do not initialize { section .noinit };
     ------                -------  -------  -------
 C:\ti\TivaWare_C_Series-2.1.4.178\examples\boards\ek-tm4c1294xl\fpga_to_tm4c\ewarm\Obj: [1]
     fpga_to_tm4c.o            208
-    fpga_to_tm4c_debug.o       72
-    startup_ewarm.o            26      512      256
+    fpga_to_tm4c_debug.o      100
+    startup_ewarm.o            30      512      256
     -----------------------------------------------
-    Total:                    306      512      256
+    Total:                    338      512      256
 
 command line: [2]
     -----------------------------------------------
@@ -120,7 +120,7 @@ shb_l.a: [7]
 
     Gaps                        8
 ---------------------------------------------------
-    Grand Total:            2 480      512      256
+    Grand Total:            2 512      512      256
 
 
 *******************************************************************************
@@ -129,17 +129,17 @@ shb_l.a: [7]
 
 Entry                      Address   Size  Type      Object
 -----                      -------   ----  ----      ------
-?main                   0x00000b6d         Code  Gb  cmain.o [6]
-FaultISR                0x00000b5b    0x2  Code  Lc  startup_ewarm.o [1]
+?main                   0x00000b8d         Code  Gb  cmain.o [6]
+FaultISR                0x00000b7b    0x2  Code  Lc  startup_ewarm.o [1]
 GPIODirModeSet          0x000006e1   0x28  Code  Gb  gpio.o [4]
 GPIOPadConfigSet        0x00000709   0xfe  Code  Gb  gpio.o [4]
 GPIOPinConfigure        0x00000827   0x38  Code  Gb  gpio.o [4]
 GPIOPinTypeUART         0x00000813   0x14  Code  Gb  gpio.o [4]
-IntDefaultHandler       0x00000b5d    0x2  Code  Lc  startup_ewarm.o [1]
-NmiSR                   0x00000b59    0x2  Code  Lc  startup_ewarm.o [1]
+IntDefaultHandler       0x00000b7d    0x2  Code  Lc  startup_ewarm.o [1]
+NmiSR                   0x00000b79    0x2  Code  Lc  startup_ewarm.o [1]
 Region$$Table$$Base     0x00000000          --   Gb  - Linker created -
 Region$$Table$$Limit    0x00000000          --   Gb  - Linker created -
-ResetISR                0x00000b45    0xe  Code  Gb  startup_ewarm.o [1]
+ResetISR                0x00000b61   0x14  Code  Gb  startup_ewarm.o [1]
 SysCtlClockFreqSet      0x0000025d  0x204  Code  Gb  sysctl.o [4]
 SysCtlPeripheralEnable  0x00000241    0x8  Code  Gb  sysctl.o [4]
 SysCtlPeripheralReady   0x00000221    0x8  Code  Gb  sysctl.o [4]
@@ -149,27 +149,27 @@ UARTConfigSetExpClk     0x000009c5   0x4c  Code  Gb  uart.o [4]
 UARTDisable             0x00000a2b   0x1e  Code  Gb  uart.o [4]
 UARTEnable              0x00000a11   0x1a  Code  Gb  uart.o [4]
 _SysCtlMemTimingGet     0x00000201   0x20  Code  Lc  sysctl.o [4]
-__aeabi_d2iz            0x00000a61         Code  Gb  DblToI32.o [5]
-__aeabi_i2d             0x00000af5         Code  Gb  I32ToDbl.o [5]
-__cmain                 0x00000b6d         Code  Gb  cmain.o [6]
-__exit                  0x00000b9d   0x14  Code  Gb  exit.o [7]
-__iar_d2uiz             0x00000a8d         Code  Gb  DblToI32.o [5]
-__iar_init_vfp          0x00000b21         Code  Gb  fpinit_M.o [5]
-__iar_program_start     0x00000b5f         Code  Gb  cstartup_M.o [6]
-__iar_ui2d              0x00000b09         Code  Gb  I32ToDbl.o [5]
-__low_level_init        0x00000b87    0x4  Code  Gb  low_level_init.o [3]
+__aeabi_d2iz            0x00000af1         Code  Gb  DblToI32.o [5]
+__aeabi_i2d             0x00000ac5         Code  Gb  I32ToDbl.o [5]
+__cmain                 0x00000b8d         Code  Gb  cmain.o [6]
+__exit                  0x00000bbd   0x14  Code  Gb  exit.o [7]
+__iar_d2uiz             0x00000b1d         Code  Gb  DblToI32.o [5]
+__iar_init_vfp          0x00000b3d         Code  Gb  fpinit_M.o [5]
+__iar_program_start     0x00000b7f         Code  Gb  cstartup_M.o [6]
+__iar_ui2d              0x00000ad9         Code  Gb  I32ToDbl.o [5]
+__low_level_init        0x00000ba7    0x4  Code  Gb  low_level_init.o [3]
 __vector_table          0x00000000  0x200  Data  Gb  startup_ewarm.o [1]
-_call_main              0x00000b79         Code  Gb  cmain.o [6]
-_exit                   0x00000b91         Code  Gb  cexit.o [6]
-_main                   0x00000b83         Code  Gb  cmain.o [6]
-exit                    0x00000b8b    0x4  Code  Gb  exit.o [3]
+_call_main              0x00000b99         Code  Gb  cmain.o [6]
+_exit                   0x00000bb1         Code  Gb  cexit.o [6]
+_main                   0x00000ba3         Code  Gb  cmain.o [6]
+exit                    0x00000bab    0x4  Code  Gb  exit.o [3]
 g_pppui32XTALtoVCO      0x000004f8  0x1b0  Data  Lc  sysctl.o [4]
 g_pui32GPIOBaseAddrs    0x00000864   0x90  Data  Lc  gpio.o [4]
 g_pui32VCOFrequencies   0x000006d8    0x8  Data  Lc  sysctl.o [4]
 g_pui32Xtals            0x0000048c   0x6c  Data  Lc  sysctl.o [4]
 g_sXTALtoMEMTIM         0x000006a8   0x30  Data  Lc  sysctl.o [4]
-initUART                0x000008f5   0xa8  Code  Gb  fpga_to_tm4c.o [1]
-main                    0x00000aad   0x48  Code  Gb  fpga_to_tm4c_debug.o [1]
+initUART                0x000008f5   0xa6  Code  Gb  fpga_to_tm4c.o [1]
+main                    0x00000a61   0x64  Code  Gb  fpga_to_tm4c_debug.o [1]
 pui32Stack              0x20000000  0x100  Data  Lc  startup_ewarm.o [1]
 
 
@@ -181,7 +181,7 @@ pui32Stack              0x20000000  0x100  Data  Lc  startup_ewarm.o [1]
 [6] = rt7M_tl.a
 [7] = shb_l.a
 
-  2 480 bytes of readonly  code memory
+  2 512 bytes of readonly  code memory
     512 bytes of readonly  data memory
     256 bytes of readwrite data memory
 
