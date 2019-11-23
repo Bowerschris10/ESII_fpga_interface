@@ -13,8 +13,8 @@
 
 // to-do: make code more modular
 
-// UART7_BASE is for receive
-// UART6_BASE is for send
+// UART7_BASE is for receiving pixel data
+// UART7_BASE is for sending fpga commands
 // UART0_BASE is for serial terminal
 
 int main(void) {
@@ -35,38 +35,9 @@ int main(void) {
     //UARTMenu();
     
     while (1) {
-        // write test buffer to serial terminal
-        //UARTSend(*quickBuffer[0], 8);
-        // put char recieved from FPGA into serial terminal
-        //UARTCharPutNonBlocking(UART0_BASE, UARTCharGetNonBlocking(UART7_BASE));
-        // put character 'a' into Raspberry Pi, (pyserial read) serial ternimal
-        
         // for commanding camera FPGA
         UARTCharPut(UART7_BASE, 'a');
         pixel_data = UARTCharGet(UART7_BASE); // is data packet coming at one time?
         UARTCharPut(UART0_BASE, pixel_data);
-        
-        /*
-        // for UART0 testing
-        char_received = UARTCharGet(UART0_BASE);
-        UARTCharPut(UART0_BASE, char_received);
-        UARTCharPut(UART0_BASE, char_received);
-        */
-        
-        // for putty use
-        //UARTCharPut(UART0_BASE, 'a');
-//        UARTCharPutNonBlocking(UART7_BASE, 'a');
-        // send char 'a' to FPGA
-        //UARTCharPutNonBlocking(UART6_BASE, 'a');
-        // send char recieved from serial termial to FPGA
-        //UARTCharPutNonBlocking(UART6_BASE,
-        //                       UARTmenu(UARTCharGetNonBlocking(UART0_BASE)));
-        
-        /*
-        for (int i = 0; i < NUM_OUTPUT_CHARS_CAMERA; i++)
-            if (!UARTCharsAvail(fpgaId))
-                charReadBuffer[i] = UARTCharGetNonBlocking(UART7_BASE);
-        */
-        //blink();
     }
 }
